@@ -1,0 +1,11 @@
+[Unit]
+Description=Firewalld Port %i
+After=network.target
+ 
+[Service]
+Type=oneshot
+ExecStart=firewall-cmd --permanent --add-port=%i/tcp; firewall-cmd --reload
+KillMode=mixed
+ 
+[Install]
+WantedBy=multi-user.target
